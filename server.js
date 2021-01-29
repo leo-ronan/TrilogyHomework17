@@ -19,6 +19,10 @@ dbConnection();
 require("./Routes/api-routes")(app);
 require("./Routes/html-routes")(app);
 
+Mongoose.connect("mongodb://localhost/workout", {
+    useNewUrlParser: true;
+    useFindAndModify: false
+})
 app.listen(PORT, function() {
     console.log("Server listening on port: " + PORT);
 });
