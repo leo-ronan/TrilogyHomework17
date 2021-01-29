@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require('path');
 const bodyParser = require('body-parser');
-const dbConnection = require("./config/dbConnection.js");
-require('dotenv/config');
-
+const logger = require("morgan");
+const mongoose = require("mongoose");
 //CONFIG EXPRESS
 const app = express();
+
+app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "/public")));
@@ -19,8 +20,8 @@ dbConnection();
 require("./Routes/api-routes")(app);
 require("./Routes/html-routes")(app);
 
-Mongoose.connect("mongodb://localhost/workout", {
-    useNewUrlParser: true;
+mongoose.connect("mongodb://localhost/workout", {
+    useNewUrlParser: true,
     useFindAndModify: false
 })
 app.listen(PORT, function() {
