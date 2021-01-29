@@ -1,5 +1,5 @@
 const path = require('path');
-const db = require("../Models");
+const db = require("../Models/schema.js");
 
 module.exports = function(app) {
     app.get("/api/workouts", (res) => {

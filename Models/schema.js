@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//CREATES NEW WORKOUT SCHEMA
 const workoutDB = new Schema (
     {
         day: {
@@ -12,16 +13,16 @@ const workoutDB = new Schema (
                 type: {
                     type: String, 
                     trim: true,
-                    required: "Please enter the workout type"
+                    required: true
                 },
                 name: {
                     type: String,
                     trim: true,
-                    required: "Please enter the workout name"
+                    required: true
                 },
                 duration: {
                     type: Number,
-                    required: "How long did you do this workout?"
+                    required: true
                 },
                 weight: {
                     type: Number
